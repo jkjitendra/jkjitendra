@@ -13,12 +13,12 @@ I'm a **Full Stack Software Engineer and Team Lead** with **5+ years of experien
 
 ### 🌌 My engineering universe
 
-<!-- Daily showcase: network view on 2026-11-11, stack view on 2026-11-12, then repeat. -->
+<!-- Daily showcase: network on even days since 2026-11-11; terminal on odd days. -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jkjitendra/jkjitendra/main/assets/showcase.svg?v=2026-11-11" width="100%" alt="Animated JK project constellation and engineering stack, rotating on alternate days" />
+  <img src="https://raw.githubusercontent.com/jkjitendra/jkjitendra/main/assets/showcase.svg?v=2026-11-11" width="100%" alt="Animated JK project constellation and terminal profile, rotating on alternate days" />
 </p>
 
-<p align="center"><sub>Network signals ↔ tech stack · automatically alternates each day</sub></p>
+<p align="center"><sub>Project network ↔ developer terminal · automatically alternates each day</sub></p>
 
 ### 🪐 Featured projects
 
@@ -34,11 +34,13 @@ I'm a **Full Stack Software Engineer and Team Lead** with **5+ years of experien
   <a href="https://github.com/jkjitendra/EduKitBox"><b>EduKitBox</b></a>
 </p>
 
+<!-- STATIC_TERMINAL_START -->
 ### 💻 Who's behind the code?
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jkjitendra/jkjitendra/main/assets/terminal.svg" width="100%" alt="A neon blue terminal showing Jitendra's engineering experience, high-traffic API achievements, and core technology focus" />
+  <img src="https://raw.githubusercontent.com/jkjitendra/jkjitendra/main/assets/terminal.svg" width="100%" alt="Terminal profile with Jitendra's custom JK logo, experience, and engineering highlights" />
 </p>
+<!-- STATIC_TERMINAL_END -->
 
 ### 🧰 Stack at a glance
 

@@ -18,26 +18,10 @@ GOLD = '#FFCF61'
 GREEN = '#51D9A7'
 BLUE = '#5CA9FF'
 
-# Explicit user-supplied film still: extract their actual JK logo, not a stock mark.
-source = Path('/mnt/data/gh_profile_work/frame_3.png')
-if (ASSETS / 'jk-logo.png').exists():
-    pass  # Rebuild safely from the logo already in this repository.
-elif source.exists():
-    img = Image.open(source).convert('RGBA')
-    # Logo center taken from the submitted video (frame at 3s).
-    raw = img.crop((305, 205, 347, 247)).resize((168, 168), Image.Resampling.LANCZOS)
-    mask = Image.new('L', (168, 168), 0)
-    ImageDraw.Draw(mask).ellipse((6, 6, 162, 162), fill=255)
-    raw.putalpha(mask)
-    raw.save(ASSETS / 'jk-logo.png')
-else:
-    # Fallback only for users rebuilding from this package on another machine.
-    img = Image.new('RGBA', (168, 168), '#ffffff')
-    d = ImageDraw.Draw(img)
-    d.ellipse((2, 2, 166, 166), fill='#ffffff')
-    f = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 67)
-    d.text((35, 38), 'JK', font=f, fill='#091320')
-    img.save(ASSETS / 'jk-logo.png')
+# Use the actual blue-and-gold JK logo supplied by the owner. Do not generate a substitute.
+logo_path = ASSETS / 'jk-logo.png'
+if not logo_path.is_file():
+    raise FileNotFoundError('Place your uploaded JK logo at assets/jk-logo.png before rebuilding')
 logo_b64 = base64.b64encode((ASSETS / 'jk-logo.png').read_bytes()).decode()
 
 def svg(title, w, h, content, extra_style=''):
@@ -127,10 +111,10 @@ for i,(name,sub,x,y,color,side) in enumerate(map_items):
               f'<circle class="twinkle" cx="{x+14}" cy="{y-14}" r="2.2" fill="{color}" style="animation-delay:{i*.31}s"/>']
 # Core pulse circles r=47..80; project labels stay beyond x=200px from center.
 for i in range(3):
-    parts += [f'<circle class="pulse-ring" cx="{cx}" cy="{cy}" r="47" stroke="{CYAN}" stroke-width="2.2" fill="none" opacity="0"><animate attributeName="r" values="47;82;82" dur="4.5s" begin="{i*1.5}s" repeatCount="indefinite"/><animate attributeName="opacity" values=".78;.22;0" dur="4.5s" begin="{i*1.5}s" repeatCount="indefinite"/></circle>']
-parts += [f'<circle cx="{cx}" cy="{cy}" r="52" fill="#83DFFF" opacity=".2" filter="url(#softGlow)"/>',
-          f'<circle cx="{cx}" cy="{cy}" r="47" fill="#102335" stroke="#4DD5F3" stroke-opacity=".78" stroke-width="2"/>',
-          f'<image x="{cx-37}" y="{cy-37}" width="74" height="74" href="data:image/png;base64,{logo_b64}"/>',
+    parts += [f'<circle class="pulse-ring" cx="{cx}" cy="{cy}" r="62" stroke="{CYAN}" stroke-width="2.2" fill="none" opacity="0"><animate attributeName="r" values="62;98;98" dur="4.5s" begin="{i*1.5}s" repeatCount="indefinite"/><animate attributeName="opacity" values=".78;.22;0" dur="4.5s" begin="{i*1.5}s" repeatCount="indefinite"/></circle>']
+parts += [f'<circle cx="{cx}" cy="{cy}" r="68" fill="#83DFFF" opacity=".20" filter="url(#softGlow)"/>',
+          f'<circle cx="{cx}" cy="{cy}" r="60" fill="#F5F1E8" stroke="#C6A767" stroke-opacity=".90" stroke-width="2"/>',
+          f'<image x="{cx-51}" y="{cy-51}" width="102" height="102" href="data:image/png;base64,{logo_b64}"/>',
           txt(cx,cy+76,'JK • ENGINEERING HUB',13,CYAN,700,cls='mono',anchor='middle',spacing='1.4'),
           '<path d="M38 580 H1162" stroke="#314155" stroke-opacity=".58"/>',
           txt(42,607,'SIGNAL / PROJECT  →  HUB',12,GOLD,650,cls='mono'),
@@ -204,19 +188,13 @@ parts=[f'<rect width="{W}" height="{H}" rx="18" fill="#090F18" stroke="#1B728D" 
        txt(45,105,'VISUAL.IDENTITY',12,'#6F99B5',700,cls='mono',spacing='1.2'),
        txt(512,105,'SYSTEM.INFO',12,'#6F99B5',700,cls='mono',spacing='1.2'),
        f'<path d="M490 352 H1177" stroke="#17506A" opacity=".55"/>']
-# Dot matrix JK monogram: dynamically sampled from a local font, drawn as lit pixels.
-font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf',150)
-bmp=Image.new('L',(330,260),0)
-d=ImageDraw.Draw(bmp)
-d.text((9,20),'JK',font=font,fill=255,stroke_width=1)
-small=bmp.resize((64,50),Image.Resampling.LANCZOS)
-for iy in range(50):
-    for ix in range(64):
-        v=small.getpixel((ix,iy))
-        if v>85:
-            px=44+ix*6.2; py=152+iy*5.6
-            alpha=.4+.6*v/255
-            parts.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="1.7" fill="{CYAN}" opacity="{alpha:.2f}"/>')
+# Display the same uploaded JK emblem used in the header and constellation.
+# A pale medallion maintains contrast for the deep-blue and gold strokes.
+parts += [
+    '<circle cx="248" cy="292" r="145" fill="#49CFF0" fill-opacity=".10" filter="url(#softGlow)"/>',
+    '<circle cx="248" cy="292" r="139" fill="#F5F1E8" stroke="#C8AE76" stroke-width="2.5"/>',
+    f'<image x="123" y="167" width="250" height="250" href="data:image/png;base64,{logo_b64}"/>',
+]
 parts += [txt(248,477,'ENGINEER / BUILDER / LEADER',14,CYAN,680,cls='mono',anchor='middle'),
           txt(513,143,'IDENTITY',14,GREEN,760,cls='mono',spacing='2')]
 identity=[('Name','Jitendra Kumar Tiwari'),('Role','Team Lead / Full Stack Engineer'),('Location','India'),('Focus','Real-time APIs • distributed systems'),('Stack','Java • Spring Boot • React • TypeScript')]
@@ -240,7 +218,7 @@ parts=[f'<rect width="{W}" height="{H}" rx="19" fill="url(#bg)"/>',stars(W,H,53,
        txt(61,71,'HELLO, WORLD. I AM',16,GOLD,700,cls='mono',spacing='2'),
        txt(61,120,'JITENDRA KUMAR TIWARI',38,WHITE,820),
        txt(63,149,'Full Stack Engineer  /  Team Lead  /  System Builder',15,MUTED,550,cls='mono'),
-       f'<circle cx="1067" cy="89" r="60" fill="#0C2336" stroke="#2A718D" stroke-width="1.5"/>',
+       f'<circle cx="1067" cy="89" r="60" fill="#F5F1E8" stroke="#C6A767" stroke-width="2"/>',
        f'<image x="1021" y="43" width="92" height="92" href="data:image/png;base64,{logo_b64}"/>',
        f'<circle cx="1067" cy="89" r="67" fill="none" stroke="{CYAN}" opacity=".38"><animate attributeName="opacity" values=".12;.60;.12" dur="4s" repeatCount="indefinite"/></circle>']
 (ASSETS/'header.svg').write_text(svg('Jitendra Kumar Tiwari GitHub developer introduction',W,H,'\n'.join(parts)),encoding='utf8')
