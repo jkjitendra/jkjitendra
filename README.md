@@ -9,7 +9,7 @@
   <a href="https://github.com/jkjitendra?tab=repositories">Repositories</a>
 </p>
 
-I'm a **Full Stack Software Engineer and Team Lead** with **5+ years of experience** building real-time, high-throughput systems with **Java, Spring Boot, React, and TypeScript**. I enjoy connecting backend architecture, performance engineering, product experience, and developer tooling.
+I'm a **Full Stack Software Engineer** with **6+ years of experience** building real-time, high-throughput systems with **Java, Spring Boot, React, and TypeScript**. I enjoy connecting backend architecture, performance engineering, product experience, and developer tooling.
 
 ### 🌌 My engineering universe
 
@@ -33,14 +33,6 @@ I'm a **Full Stack Software Engineer and Team Lead** with **5+ years of experien
   <a href="https://github.com/jkjitendra/transfer-aggregator-service"><b>Transfer Aggregator</b></a> &nbsp;·&nbsp;
   <a href="https://github.com/jkjitendra/EduKitBox"><b>EduKitBox</b></a>
 </p>
-
-<!-- STATIC_TERMINAL_START -->
-### 💻 Who's behind the code?
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jkjitendra/jkjitendra/main/assets/terminal.svg" width="100%" alt="Terminal profile with Jitendra's custom JK logo, experience, and engineering highlights" />
-</p>
-<!-- STATIC_TERMINAL_END -->
 
 ### 🛠️ Tech Stack
 
@@ -82,13 +74,5 @@ My working stack, grouped by area. Each badge includes a technology icon and is 
 #### Monitoring & Observability
 
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)
-
-### ⚡ Engineering highlights
-
-- ⚙️ Supported **~2.3k RPS** during peak traffic while maintaining **~95ms P95 / ~100ms P99** API latency.
-- 🚀 Reduced endpoint latency from **~1 second to ~100ms** through Spring Boot modernization, caching, and database tuning.
-- 📈 Built **live polls** and **win-probability** experiences; the latter contributed to **30% higher retention**.
-- 🧩 Lead a **4-member engineering team**, driving system design, code reviews, and cross-team delivery.
-- 🔍 Designed a **centralized logging framework** with structured logs and request-context propagation.
 
 <p align="center"><sub>Building useful software. Making complex systems simpler.</sub></p>
