@@ -39,7 +39,7 @@ The package is a complete `jkjitendra/jkjitendra` repository drop-in. It uses **
 - **2026-11-12** is developer terminal day.
 - **2026-11-13** is network day, and the pattern continues.
 - Schedule: **18:33 UTC / 00:03 IST** daily, best-effort. GitHub may delay or drop a scheduled job during load. This means the change may not happen exactly at midnight.
-- The README's technology table remains visible every day. On **network days**, the developer terminal appears **below the featured project cards**; on **terminal days**, the developer terminal replaces the network in the main showcase and is hidden from the lower section to prevent duplication.
+- The README's line-by-line, icon-based tech stack badges remain visible every day. On **network days**, the developer terminal appears **below the featured project cards**; on **terminal days**, the developer terminal replaces the network in the main showcase and is hidden from the lower section to prevent duplication.
 
 Run locally for a specific day:
 ```bash
@@ -63,4 +63,10 @@ The script updates `assets/showcase.svg`, the versioned image URL, and the marke
 - To disable alternation, disable the workflow and replace `assets/showcase.svg` with whichever SVG you prefer. If you make manual README changes, keep the showcase image URL and the `STATIC_TERMINAL_START`/`STATIC_TERMINAL_END` comments recognizable to the rotation script. To change the lower terminal block, edit `TERMINAL_BELOW_PROJECTS` in `scripts/rotate_showcase.py`.
 - To link other repositories, edit the Markdown project links below the graphic. Public projects and employer/private features should be described appropriately.
 
-The illustrated tech stack from the third reference image remains available at `assets/stack.svg` for use in the future, but is **not** in the alternating showcase.
+## Tech-stack badges
+
+The **Tech Stack** section in `README.md` uses flat-square [Shields.io](https://shields.io/) badges with Simple Icons branding, grouped by backend, frontend, databases, messaging, AWS, DevOps, developer tools, security, and observability. This format follows your requested colored icon-badge reference: **there is no technology table**.
+
+The badges cover every technology category explicitly present in the supplied resume, plus project-specific tools used in Arkil, CodeBundle, and EduKitBox (for example, Electron, Python, IndexedDB, Spring Authorization Server). "VS Code Extensions" and "IndexedDB" use their host-technology icons because the corresponding badge logos may not exist; this does not indicate a different product.
+
+Shields.io badges require network access when viewed on GitHub. If a badge's logo is not available from its icon provider, the text badge still renders. To edit skills, edit the grouped Markdown lines in `README.md`. The older `assets/stack.svg` is retained as an optional offline illustration but is **not** the displayed tech stack or a daily rotation target.
